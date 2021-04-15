@@ -25,7 +25,7 @@ class ClientController extends Controller
 
         if($request->ajax()){
          
-         $data = User::where('is_deleted',0)->latest();
+         $data = User::where('is_deleted',0)->latest()->get();
          return Datatables::of($data)
                             ->addIndexColumn()
                              ->addColumn('date',function($data){

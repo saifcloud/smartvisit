@@ -1,6 +1,28 @@
 @extends('admin::layouts.master')
 @section('content')
+<style type="text/css">
+    .caret_green{
+    width: 15px;
+    height: 15px;
+    background: #28a745;
+    display: inline-block;
+    border-bottom: 8px solid #28a745;
+    border-right: 8px solid #fff;
+    border-left: 8px solid #fff;
+    margin-right: 8px;
+}
 
+.caret_red{
+    width: 15px;
+    height: 15px;
+    background: #dc3545;
+    display: inline-block;
+    border-bottom: 8px solid #dc3545;
+    border-right: 8px solid #fff;
+    border-left: 8px solid #fff;
+    margin-right: 8px;
+}
+</style>
 <body class="theme-orange">
 
 <!-- Page Loader -->

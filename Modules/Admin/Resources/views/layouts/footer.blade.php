@@ -49,7 +49,7 @@
 	        serverSide: true,
 	        ajax: "{{ url('admin/product') }}",
 	        columns: [
-	            {data: 'id', name: 'id'},
+	            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
 	            {data: 'name', name: 'name'},
 	            {data: 'quantity', name: 'quantity'},
 	            {data: 'average_price', name: 'average_price'},
@@ -173,7 +173,7 @@
 	        serverSide: true,
 	        ajax: "{{ url('admin/client') }}",
 	        columns: [
-	            {data: 'id', name: 'id'},
+	            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
 	            {data: 'name', name: 'name'},
 	            {data: 'email', name: 'email'},
 	            {data: 'phone', name: 'phone'},
@@ -209,7 +209,7 @@
 	        serverSide: true,
 	        ajax: "{{ url('admin/stock') }}",
 	        columns: [
-	            {data: 'id', name: 'id'},
+	            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
 	            {data: 'client', name: 'client'},
 	            {data: 'date', name: 'date'},
 	            {data: 'stock_end_date', name: 'stock_end_date'},
@@ -276,7 +276,7 @@
 
 
                	//percentage profit
-               	var percentageProfit = parseFloat(profitInAmount) /parseFloat(buyingAmount)*100;
+               	var percentageProfit = (parseFloat(profitInAmount) /parseFloat(buyingAmount)*100).toFixed(2);
                	$('#stprofitper').val(percentageProfit);
                }else{
                	$('#st_total_amount').val("");

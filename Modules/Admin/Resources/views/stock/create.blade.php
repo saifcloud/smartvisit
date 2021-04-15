@@ -1,5 +1,6 @@
 @extends('admin::layouts.master')
 @section('content')
+
 <body class="theme-orange">
 
 <!-- Page Loader -->

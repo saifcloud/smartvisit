@@ -26,15 +26,14 @@ class StockController extends Controller
         $page_title = 'Stocks';
         $clients = User::where('status',1)->where('is_deleted',0)->get();
         $stocks = Product::where('status',1)->where('is_deleted',0)->get();
-          // $data = Stock_history::where('is_deleted',0)->latest();
+          // $data = Stock_history::where('is_deleted',0)->orderBy('created_at','desc')->get();
           // print_r($data); die;
          if($request->ajax()){
          
-         $data = Stock_history::where('is_deleted',0)->orderby('id','desc')->get();
+         $data = Stock_history::where('is_deleted',0)->orderBy('id','desc')->get();
          return Datatables::of($data)
                             ->addIndexColumn()
-
-                           ->addColumn('client',function($data){
+                            ->addColumn('client',function($data){
                                 $btn= $data->user->name;
                                 return $btn;
                             })
@@ -52,21 +51,21 @@ class StockController extends Controller
                                 return $btn;
                             })
 
-                            ->addIndexColumn()
+                           
                              ->addColumn('amount',function($data){
                                 $btn=  number_format($data->quantity * $data->buying_price,2);
                                 return $btn;
                             })
 
 
-                            ->addIndexColumn()
+                           
                              ->addColumn('total',function($data){
                                  $btn=  number_format($data->quantity * $data->selling_price,2);
                                 return $btn;
                             })
 
 
-                            ->addIndexColumn()
+                          
                              ->addColumn('profit',function($data){
                                  $sellprice =  $data->quantity * $data->selling_price;
                                  $buyprice = $data->quantity * $data->buying_price;
@@ -75,18 +74,22 @@ class StockController extends Controller
                             })
 
 
-                            ->addIndexColumn()
+                            
                              ->addColumn('actual_profit',function($data){
 
                                  $sellprice =  $data->quantity * $data->selling_price;
                                  $buyprice = $data->quantity * $data->buying_price;
                                  $profitAmount = $sellprice - $buyprice;
-
+                                
                                  $profitInPercentage = $profitAmount/$buyprice*100;
-
-
-
-                                $btn=  number_format($profitInPercentage,2);
+                                 
+                                 if($buyprice > $sellprice){
+                                   $btn=  '<span class="caret_red"></span>'.number_format(abs($profitInPercentage),2);
+                                 }else{
+                                   $btn=  '<span class="caret_green"></span>'.number_format(abs($profitInPercentage),2);
+                                 }
+                                 
+                               
                                 return $btn;
                             })
                             // ->addColumn('action',function($data){
@@ -101,7 +104,7 @@ class StockController extends Controller
                             //     // $btn.= '<a href="'.url("admin/stocks/delete/'.base64_encode($data->id).'").'" class="mr-4 btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>';
                             //     return $btn;
                             // })
-                            ->rawColumns(['client'])
+                            ->rawColumns(['client','actual_profit'])
                             ->make(true);
         }
 
@@ -140,7 +143,7 @@ class StockController extends Controller
         $stock->client_id      = $request->client_id;
         $stock->product_id     = $request->product_id;
         $stock->quantity       = $request->quantity;
-        // $stock->buying_price   = $request->buying_price;
+        $stock->buying_price   = $product->buying_price;
         $stock->selling_price  = $request->selling_price;
         $stock->date           = $request->date;
         $stock->stock_end_date = $request->trade_end_date;

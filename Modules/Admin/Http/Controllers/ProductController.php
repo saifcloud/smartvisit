@@ -22,7 +22,7 @@ class ProductController extends Controller
 
         if($request->ajax()){
          
-         $data = Product::where('is_deleted',0)->get();
+         $data = Product::where('is_deleted',0)->latest()->get();
          return Datatables::of($data)
                             ->addIndexColumn()
                              ->addColumn('average_price',function($data){
