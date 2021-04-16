@@ -18,7 +18,8 @@ class CreateStocksTable extends Migration
             $table->string('name');
             $table->integer('quantity');
             $table->double('buying_price',10,2);
-            $table->double('selling_price',10,2);
+            // $table->double('selling_price',10,2);
+            $table->double('total_amount',10,2);
             $table->integer('status')->default(1)->comment('1=>active');
             $table->integer('is_deleted')->default(0)->comment('1=>deleted');
             $table->timestamps();

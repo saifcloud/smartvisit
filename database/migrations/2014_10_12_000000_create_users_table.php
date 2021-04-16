@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->longText('address');
             $table->string('password');
+            $table->string('random_password')->nullable();
             $table->integer('status')->default(1)->comment('1=>active');
             $table->integer('is_deleted')->default(0)->comment('1=>deleted');
             $table->rememberToken();
