@@ -102,7 +102,16 @@
 
                                     <div class="form-group col-sm-6">
                                         <label>Password</label>
-                                        <input type="password" class="form-control" name="password">
+                                        
+                                        <div class="row">
+                                        <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="password" id="passwordRn">
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                        <a class="btn btn-success" href="javascript:void(0)" id="generatePassword">Generate password</a>
+                                        </div>
+                                        </div>
                                         @if($errors->has('password'))
                                         <p class="text-danger">{{ $errors->first('password') }}</p>
                                         @endif

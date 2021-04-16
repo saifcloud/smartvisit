@@ -1,4 +1,4 @@
-@extends('admin::layouts.master')
+@extends('layouts.default')
 @section('content')
 <style type="text/css">
     .caret_green{
@@ -32,9 +32,9 @@
 
 <div id="wrapper">
 
-  @include('admin::partials.navbar')
+  @include('partials.navbar')
 
-  @include('admin::partials.sidebar')
+  @include('partials.sidebar')
 
     
 

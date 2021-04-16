@@ -137,7 +137,7 @@
            <div class="form-group col-sm-12">
            <label>Select Client</label>
             <select class="form-control" name="client" id="client">
-              <option value="" disabled="" selected="">-select-</option>
+              <option value=""  selected="">-select-</option>
               @if(count($clients))
               @foreach($clients as $row)
                <option value="{{ $row->id }}">{{ $row->name}}</option>
@@ -164,7 +164,7 @@
           <div class="form-group col-sm-12">
           <label>Select Stock item</label>
           <select class="form-control" name="stock_item" id="stock_item">
-              <option value="" disabled="" selected="">-select-</option>
+              <option value="" selected="">-select-</option>
               @if(count($stocks))
               @foreach($stocks as $row)
                <option value="{{ $row->id }}">{{ $row->name}}&nbsp;&nbsp;&nbsp;(in stock {{ $row->quantity}})</option>

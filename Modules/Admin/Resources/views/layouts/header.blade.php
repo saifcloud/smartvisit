@@ -11,7 +11,7 @@
 <!-- VENDOR CSS -->
 <link rel="stylesheet" href="{{ url('public/admin_assets/css/bootstrap.min.css') }}">
 <!-- <link rel="stylesheet" href="{{ url('public/admin_assets/css/font-awesome.min.css') }}"> -->
-<!-- <link rel="stylesheet" href="{{ url('public/admin_assets/css/font-awesome.min.css')}}"> -->
+<link rel="stylesheet" href="https://www.wrraptheme.com/templates/hexabit/html/assets/vendor/font-awesome/css/font-awesome.min.css">
 
 <!-- <link rel="stylesheet" href="{{ url('public/admin_assets/css/dataTables.bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ url('public/admin_assets/css/dataTables.fixedcolumns.bootstrap4.min.css') }}">

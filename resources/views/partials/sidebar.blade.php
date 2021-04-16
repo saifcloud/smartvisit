@@ -26,12 +26,12 @@
 
                     <li class="{{ isset($page_title) && $page_title=='Dashboard' ? 'active':''}}"><a href="{{ url('dashboard')}}"><i class="icon-home"></i><span>Dashboard</span></a></li>
 
-                    <li class="{{ isset($page_title) && $page_title=='Products' || $page_title=='Product create' 
+                 <!--    <li class="{{ isset($page_title) && $page_title=='Products' || $page_title=='Product create' 
                     || $page_title=='Product edit' || $page_title=='Product details' ? 'active':''}}"><a href="{{ url('product')}}"><i class="icon-envelope"></i><span>Product</span></a></li>
 
                     <li class="{{ isset($page_title) && $page_title=='Client' || $page_title=='Create client' 
                     || $page_title=='Client edit' || $page_title=='Client details' ? 'active':''}}"><a href="{{ url('client')}}"><i class="icon-envelope"></i><span>Client</span></a></li>
-
+ -->
                     <li class="{{ isset($page_title) && $page_title=='Stocks' || $page_title=='Create clientg' 
                     || $page_title=='Client editg' || $page_title=='Client detailsg' ? 'active':''}}"><a href="{{ url('stock')}}"><i class="icon-envelope"></i><span>Stocks</span></a></li>
 

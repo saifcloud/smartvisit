@@ -163,6 +163,20 @@
 
 <!-- client -->
 <script type="text/javascript">
+
+  function myFunction() {
+    // alert('ok')
+  var x = document.getElementById("clientPassword");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+
+
+
 	$(document).ready(function(){
      $.ajaxSetup({
 		    headers: {
@@ -185,6 +199,22 @@
 	            {data: 'action', name: 'action', orderable: false, searchable: false},
 	        ]
 	    });
+
+
+   
+   $('#generatePassword').click(function(){
+       
+        var length = 8,
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+        retVal = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            retVal += charset.charAt(Math.floor(Math.random() * n));
+        }
+         $('#passwordRn').val(retVal);
+
+   });
+  
+
 
 
 
@@ -238,13 +268,15 @@
 			  	  autoclose: true, 
                   todayHighlight: true,
                   format: 'yyyy-mm-dd'
-			  }).datepicker('update', new Date());
+			  })
+        // .datepicker('update', new Date());
 
 			  $('#st-trade-end').datepicker({
 			  	  autoclose: true, 
                   todayHighlight: true,
                  format: 'yyyy-mm-dd'
-			  }).datepicker('update', new Date());
+			  })
+        // .datepicker('update', new Date());
            
 
 
@@ -264,9 +296,9 @@
 
             //on  input selling price
              $('#selling_price').on('input', function() {
-			   var selling_price = $(this).val();
-			   var quantity      = $('#quantity').val();
-			   var buying_price  = $('#buying_price').val();
+      			   var selling_price = $(this).val();
+      			   var quantity      = $('#quantity').val();
+      			   var buying_price  = $('#buying_price').val();
 			
                if(selling_price !=''){
                	var sellingAmount = parseFloat(quantity)* parseFloat(selling_price);
@@ -293,7 +325,7 @@
             // onclose model remove validations
              $('body').on('click','.addStockClose',function(){
 	             $('.client-error').text('');
-	             $('#st-date-error').text('');
+	             $('.st-date-error').text('');
 	             $('.stock_item-error').text('');
 	             $('.st-end-error').text('');
 	             $('.quantity-error').text('');
@@ -398,7 +430,7 @@
                             $('#buying_price').val("");
                             $('#selling_price').val("");
                              table.draw();
-                             }, 3000);
+                             }, 2000);
                            
 	                       }else{
 	                       	$('.server-error').text(response.message);

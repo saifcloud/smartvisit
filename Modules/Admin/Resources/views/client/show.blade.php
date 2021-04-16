@@ -1,5 +1,14 @@
 @extends('admin::layouts.master')
 @section('content')
+<style type="text/css">
+  .field-icon {
+/*  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;*/
+}
+</style>
 <body class="theme-orange">
 
 <!-- Page Loader -->
@@ -77,6 +86,21 @@
                                        <th>Client Address</th>
                                        <td>{{ $client->address }}</td>
                                   </tr>
+                                  
+                                  @if($client->random_password !=null)
+                                  <tr>
+                                       <th>Password</th>
+                                       <td><input type="password" name="" value="{{ $client->random_password }}" readonly="" style="
+                                       border: none; 
+                                       outline: none; 
+                                       background: transparent;
+                                        cursor: pointer;
+                                       /*cursor: not-allowed;*/
+                                       /*pointer-events: all !important;" */
+                                        id="clientPassword">
+                                     <input type="checkbox" onclick="myFunction();">Show Password</span></td>
+                                  </tr>
+                                  @endif
                                </table>
                            </div>
 

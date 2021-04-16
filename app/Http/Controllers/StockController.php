@@ -15,6 +15,8 @@ class StockController extends Controller
     public function index()
     {
         //
+        $page_title = "Stocks";
+        return  view('stock.index',compact('page_title'));
     }
 
     /**
@@ -25,6 +27,8 @@ class StockController extends Controller
     public function create()
     {
         //
+        $page_title = "Stocks";
+        return  view('stock.create',compact('page_title'));
     }
 
     /**
@@ -47,6 +51,7 @@ class StockController extends Controller
     public function show(Stock $stock)
     {
         //
+         return  view('stock.show');
     }
 
     /**
@@ -58,6 +63,7 @@ class StockController extends Controller
     public function edit(Stock $stock)
     {
         //
+         return  view('stock.edit');
     }
 
     /**

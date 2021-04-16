@@ -231,7 +231,7 @@
                                 <div class="body">
                                     <div class="clearfix">
                                         <div class="float-left">
-                                            <i class="fa fa-2x fa-shopping-cart text-col-red"></i>
+                                            <i class="fa fa-2x fa-user text-col-red"></i>
                                         </div>
                                         <div class="number float-right text-right">
                                             <h6>Clients</h6>

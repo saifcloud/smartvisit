@@ -30,10 +30,13 @@ Route::get('clear', function () {
 Route::get('/',[AuthController::class,'index']);
 Route::post('login',[AuthController::class,'create']);
 
+
+
+//protected routes
 Route::group(['middleware'=>'web'],function(){
 
-	Route::get('dashboard',[UserController::class,'index']);
-	Route::get('logout',[UserController::class,'destroy']);
+Route::get('dashboard',[UserController::class,'index']);
+Route::get('logout',[UserController::class,'destroy']);
 
 
 
@@ -47,5 +50,25 @@ Route::post('profile',[UserController::class,'store']);
 //change password 
 Route::get('change-password',[UserController::class,'change_password']);
 Route::post('change-password',[UserController::class,'store_change_password']);
+
+
+
+
+//stock
+Route::get('stock','StockController@index');
+
+Route::get('stock/create','StockController@create');
+Route::post('add-stock-to-client','StockController@store');
+
+Route::post('get-stock-item','StockController@get_stock_item');
+
+Route::get('stock/show/{id}','StockController@show');
+
+Route::get('stock/edit/{id}','StockController@edit');
+Route::post('stock/update','StockController@update');
+
+Route::get('stock/delete/{id}','StockController@destroy');
+
+
 });
 

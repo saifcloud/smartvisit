@@ -101,12 +101,12 @@ class ClientController extends Controller
                                                 ->withInput();
 
         $client = new User();
-        $client->name       = $request->name;
-        $client->email      = $request->email;
-        $client->phone      = $request->phone;
-        $client->password   = Hash::make($request->password);
-        $client->address    = $request->address;
-      
+        $client->name             = $request->name;
+        $client->email            = $request->email;
+        $client->phone            = $request->phone;
+        $client->password         = Hash::make($request->password);
+        $client->random_password  = $request->password;
+        $client->address          = $request->address;
         if($client->save()){
             return redirect('admin/client')->with('success','Client added successfully.');
         }
