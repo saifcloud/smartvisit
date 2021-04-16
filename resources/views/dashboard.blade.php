@@ -1,4 +1,4 @@
-@extends('admin::layouts.master')
+@extends('layouts.default')
 @section('content')
 <body class="theme-orange">
 
@@ -14,7 +14,7 @@
 
 <div id="wrapper">
 
-   @include('admin::partials.navbar')
+   @include('partials.navbar')
 
     <!-- <div id="rightbar" class="rightbar">
         <ul class="nav nav-tabs-new">
@@ -169,7 +169,7 @@
         </div>
     </div>
  -->
-   @include('admin::partials.sidebar')
+   @include('partials.sidebar')
 
     <div id="main-content">
         <div class="block-header">
@@ -201,13 +201,13 @@
                                         </div>
                                         <div class="number float-right text-right">
                                             <h6>Current stocks value</h6>
-                                            <span class="font700">${{ isset($total_stock_value) ? $total_stock_value:''}}</span>
+                                            <span class="font700">$22,500</span>
                                         </div>
                                     </div>
                                     <div class="progress progress-xs progress-transparent custom-color-blue mb-0 mt-3">
-                                        <div class="progress-bar" data-transitiongoal="100"></div>
+                                        <div class="progress-bar" data-transitiongoal="87"></div>
                                     </div>
-                                    <!-- <small class="text-muted">19% compared to last week</small> -->
+                                    <small class="text-muted">19% compared to last week</small>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -217,14 +217,14 @@
                                             <i class="fa fa-2x fa-bar-chart-o text-col-green"></i>
                                         </div>
                                         <div class="number float-right text-right">
-                                            <h6>Total stocks</h6>
-                                            <span class="font700">{{ isset($total_stock) ? $total_stock:'' }}</span>
+                                            <h6>Sales</h6>
+                                            <span class="font700">$500</span>
                                         </div>
                                     </div>
                                     <div class="progress progress-xs progress-transparent custom-color-green mb-0 mt-3">
-                                        <div class="progress-bar" data-transitiongoal="100"></div>
+                                        <div class="progress-bar" data-transitiongoal="28"></div>
                                     </div>
-                                    <!-- <small class="text-muted">19% compared to last week</small> -->
+                                    <small class="text-muted">19% compared to last week</small>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -234,14 +234,14 @@
                                             <i class="fa fa-2x fa-shopping-cart text-col-red"></i>
                                         </div>
                                         <div class="number float-right text-right">
-                                            <h6>Clients</h6>
-                                            <span class="font700">{{ isset($clients) ? $clients:''}}</span>
+                                            <h6>Orders</h6>
+                                            <span class="font700">215</span>
                                         </div>
                                     </div>
                                     <div class="progress progress-xs progress-transparent custom-color-red mb-0 mt-3">
-                                        <div class="progress-bar" data-transitiongoal="100"></div>
+                                        <div class="progress-bar" data-transitiongoal="41"></div>
                                     </div>
-                                    <!-- <small class="text-muted">19% compared to last week</small> -->
+                                    <small class="text-muted">19% compared to last week</small>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-6">
@@ -251,14 +251,14 @@
                                             <i class="fa fa-2x fa-thumbs-up text-col-yellow"></i>
                                         </div>
                                         <div class="number float-right text-right">
-                                            <h6>Todays sales</h6>
-                                            <span class="font700">${{ isset($todaySale) ? $todaySale:""}}</span>
+                                            <h6>Likes</h6>
+                                            <span class="font700">21,215</span>
                                         </div>
                                     </div>
                                     <div class="progress progress-xs progress-transparent custom-color-yellow mb-0 mt-3">
-                                        <div class="progress-bar" data-transitiongoal="100"></div>
+                                        <div class="progress-bar" data-transitiongoal="75"></div>
                                     </div>
-                                    <!-- <small class="text-muted">19% compared to last week</small> -->
+                                    <small class="text-muted">19% compared to last week</small>
                                 </div>
                             </div>
                         </div>

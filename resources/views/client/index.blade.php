@@ -141,4 +141,7 @@
 </div>
 <!--end Model for add quantity  -->
 
-@endsection
+
+</body>
+
+</html>

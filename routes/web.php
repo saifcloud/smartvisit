@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,8 +23,29 @@ Route::get('clear', function () {
     return "Cleared!";
 });
 
-Route::get('/', function () {
-  return "<h1>Coming soon.....</h1>";
-});
+// Route::get('/', function () {
+//   return "<h1>Coming soon.....</h1>";
+// });
 
+Route::get('/',[AuthController::class,'index']);
+Route::post('login',[AuthController::class,'create']);
+
+Route::group(['middleware'=>'web'],function(){
+
+	Route::get('dashboard',[UserController::class,'index']);
+	Route::get('logout',[UserController::class,'destroy']);
+
+
+
+
+
+
+//profile
+Route::get('profile',[UserController::class,'create']);
+Route::post('profile',[UserController::class,'store']);
+
+//change password 
+Route::get('change-password',[UserController::class,'change_password']);
+Route::post('change-password',[UserController::class,'store_change_password']);
+});
 

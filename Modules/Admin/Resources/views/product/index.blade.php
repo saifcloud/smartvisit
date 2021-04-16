@@ -70,7 +70,7 @@
                                                 <th>No</th>
                                                 <th>Name</th>
                                                 <th>Quantity</th>
-                                                <th>Average price</th>
+                                                <th>Average buy price</th>
                                                 <th>Total Amount</th>
                                                 <th>Created At</th>
                                                 <th width="100px">Action</th>
@@ -141,7 +141,4 @@
 </div>
 <!--end Model for add quantity  -->
 
-
-</body>
-
-</html>
+@endsection

@@ -38,7 +38,7 @@ class AuthController extends Controller
        if(Auth::guard('admin')->attempt($credential)){
          return redirect('admin/dashboard');
        }else{
-         return redirect()->back()->with('failed','Please check email or password.');
+         return redirect()->back()->with('failed','Please check email or password.')->withInput();
        }
 
         // return view('admin::create');

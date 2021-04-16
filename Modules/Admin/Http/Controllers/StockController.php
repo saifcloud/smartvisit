@@ -135,7 +135,8 @@ class StockController extends Controller
         if($request->quantity > $product->quantity ){
             return response()->json(['status'=>false,'message'=>"In sufficient stock."]);
         }
-        $product->quantity = $product->quantity -$request->quantity;
+        $product->quantity     = $product->quantity -$request->quantity;
+        $product->total_amount =  $product->total_amount - ($product->quantity *$product->buying_price);
         $product->save();
 
 

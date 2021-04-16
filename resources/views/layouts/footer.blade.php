@@ -1,7 +1,7 @@
 <!-- Javascript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- <script src="{{ url('public/admin_assets/bundles/libscripts.bundle.js') }}"></script>     -->
+<script src="{{ url('public/admin_assets/bundles/libscripts.bundle.js') }}"></script>    
 
 <script src="{{ url('public/admin_assets/bundles/vendorscripts.bundle.js') }}"></script>
 
@@ -13,29 +13,26 @@
 
 <script src="{{ url('public/admin_assets/bundles/mainscripts.bundle.js')}}"></script>
 
-<script src="{{ url('public/admin_assets/js/jquery.validate.js')}}"></script>
-
-<script src="{{ url('public/admin_assets/js/jquery.dataTables.min.js')}}"></script>
-
-<script src="{{ url('public/admin_assets/js/bootstrap.min.js')}}"></script>
-
-<script src="{{ url('public/admin_assets/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 
-<!-- <script src="{{ url('public/admin_assets/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{ url('public/admin_assets/js/buttons.bootstrap4.min.js')}}"></script>
 
 <script src="{{ url('public/admin_assets/js/buttons.colVis.min.js')}}"></script>
 
 <script src="{{ url('public/admin_assets/js/buttons.html5.min.js')}}"></script>
 
-<script src="{{ url('public/admin_assets/js/buttons.print.min.js')}}"></script> -->
+<script src="{{ url('public/admin_assets/js/buttons.print.min.js')}}"></script>
 
 <script src="{{ url('public/admin_assets/js/sweetalert.min.js')}}"></script>
 
 <script src="{{ url('public/admin_assets/js/index.js')}}"></script>
 
 <!-- datepicker -->
-<script src="{{ url('public/admin_assets/js/bootstrap-datepicker.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
 <!-- product -->
 <script type="text/javascript">

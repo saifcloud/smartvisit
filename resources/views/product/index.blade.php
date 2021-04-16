@@ -28,7 +28,7 @@
                         <!-- <li class="breadcrumb-item">Table</li> -->
                         <li class="breadcrumb-item active">{{ isset($page_title) ? $page_title:""}}</li>
                     </ul>
-                    <a href="{{ url('admin/client/create')}}" class="btn btn-sm btn-primary" title="">Create New</a>
+                    <a href="{{ url('admin/product/create')}}" class="btn btn-sm btn-primary" title="">Create New</a>
                 </div>
             </div>
         </div>
@@ -64,14 +64,14 @@
                                 <i class="icon wb-plus" aria-hidden="true"></i> Add row
                             </button> -->
                             <div class="table-responsive">
-                                <table class="table table-bordered data-table-client">
+                                <table class="table table-bordered data-table-product">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Address</th>
+                                                <th>Quantity</th>
+                                                <th>Average price</th>
+                                                <th>Total Amount</th>
                                                 <th>Created At</th>
                                                 <th width="100px">Action</th>
                                             </tr>
@@ -100,31 +100,31 @@
 </button> -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+<div class="modal fade" id="addQty" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Quantity</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close addQtyClose" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <!--  -->
 
-
+         <input type="hidden" name="product_id" value="" id="product_id">
          <div class="row col-sm-12">
-
+              
            <div class="form-group col-sm-6">
            <label>Quantity</label>
-           <input type="number"   class="form-control" name="quantity"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" >
-           <p class="text-danger"></p>
+           <input type="number"   class="form-control" name="quantity"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="iquantity">
+           <p class="text-danger iquantity-error"></p>
           </div>
 
           <div class="form-group col-sm-6">
           <label>Buying price</label>
-          <input type="number" step="1" min="1" class="form-control" name="buying_price">
-          <p class="text-danger"></p>
+          <input type="number" step="1" min="1" class="form-control" name="buying_price" id="iprice">
+          <p class="text-danger iprice-error"></p>
           </div>
 
 
@@ -133,12 +133,15 @@
         <!--  -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-secondary addQtyClose" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="add-quantity">Add</button>
       </div>
     </div>
   </div>
 </div>
 <!--end Model for add quantity  -->
 
-@endsection
+
+</body>
+
+</html>

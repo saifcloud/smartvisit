@@ -48,14 +48,14 @@
                            
                         </div>
                         <div class="body">
-                            <form class="form-auth-small" action="{{ url('admin/login')}}" method="POST">
+                            <form class="form-auth-small" action="{{ url('login')}}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="signin-email" class="control-label sr-only">Email</label>
-                                    <input type="email" class="form-control" id="signin-email" value="" placeholder="Email" name="email" value="{{ old('email')}}">
+                                    <label for="signin-email" class="control-label">Email</label>
+                                    <input type="text" class="form-control" id="signin-email" value="" placeholder="Email" name="email" value="{{ old('email') }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="signin-password" class="control-label sr-only">Password</label>
+                                    <label for="signin-password" class="control-label">Password</label>
                                     <input type="password" class="form-control" id="signin-password"  placeholder="Password" name="password">
                                 </div>
                                 <div class="form-group clearfix">
