@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Stock;
+
 use Illuminate\Http\Request;
+
+use DataTables;
+use Auth;
+use Carbon\Carbon;
+
+
+use App\Stock;
+use App\Stock_history;
 
 class StockController extends Controller
 {
@@ -12,11 +20,40 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $page_title = "Stocks";
-        return  view('stock.index',compact('page_title'));
+         $page_title = 'Stocks';
+
+         if($request->ajax()){
+         
+         $data = Stock_history::where('client_id',Auth::id())
+                                 ->where('is_deleted',0)
+                                 ->orderBy('id','desc')
+                                 ->get();
+         return Datatables::of($data)
+                            ->addIndexColumn()
+                           
+                            ->addColumn('item',function($data){
+                                $btn= $data->product->name;
+                                return $btn;
+                            })
+                              ->addColumn('total',function($data){
+                                $btn= number_format($data->quantity * $data->selling_price,2);
+                                return $btn;
+                            })
+
+                            ->addColumn('date',function($data){
+                                $btn=  Carbon::parse($data->date)->format('d F Y');
+                                return $btn;
+                            })
+                            ->rawColumns([])
+                            ->make(true);
+        }
+
+
+
+        return view('stock.index',compact('page_title'));
     }
 
     /**

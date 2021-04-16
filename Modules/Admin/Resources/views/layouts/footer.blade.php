@@ -378,6 +378,9 @@
                if($('#quantity').val()==""){
               	$('.quantity-error').text('*Please enter quantity');
               	error++;
+              }else if($('#quantity').val()==0){
+                $('.quantity-error').text('*Quantity should be greater than 0.');
+                 error++;
               }else{
               	$('.quantity-error').text('');
               }

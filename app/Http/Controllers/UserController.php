@@ -49,13 +49,14 @@ class UserController extends Controller
           //
         $request->validate([
           'name'=>'required',
-          // 'email'=>'required'
+          'phone'=>'required',
+          'address'=>'required'
         ]);
 
         $user = User::find(Auth::id());
         $user->name  = $request->name;
         $user->phone = $request->phone;
-        $user->password = $request->password;
+        $user->address = $request->address;
         $user->save();
 
         return redirect('dashboard');
@@ -73,12 +74,15 @@ class UserController extends Controller
 
      public function store_change_password(Request $request)
     {
+
+
         $request->validate([
            'new_password'=>'required|min:6',
            'confrim_password'=>'required|min:6|same:new_password'
         ]);
         $user = User::find(Auth::id());
         $user->password = Hash::make($request->new_password);
+        $user->random_password = base64_encode($request->new_password);
         $user->save();
 
         return redirect()->back()->with('success','Password has been changed successfully.');

@@ -77,12 +77,31 @@
                                         @endif
                                     </div>
 
+                                 </div>
 
-                                </div>
-                               
-                                
 
-                               
+                                    
+
+
+                              
+                            <div class="row col-sm-12">
+
+                                <div class="form-group col-sm-4">
+                                        <label>Phone</label>
+                                        <input type="text" class="form-control" name="phone" value="{{ $user->phone}}">
+                                        @if($errors->has('phone'))
+                                        <p class="text-danger">{{ $errors->first('phone') }}</p>
+                                        @endif
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                        <label>Address</label>
+                                         <textarea name="address" class="form-control">{{ $user->address}}</textarea>
+                                        @if($errors->has('address'))
+                                        <p class="text-danger">{{ $errors->first('address') }}</p>
+                                        @endif
+                                    </div>
+                                 </div>
                                
                               
                                

@@ -13,6 +13,6 @@ class Stock_history extends Model
     }
 
      public function product(){
-    	return $this->hasOne('App\product','id','product_id');
+    	return $this->hasOne('App\Product','id','product_id');
     }
 }

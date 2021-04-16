@@ -51,7 +51,7 @@
                         <!-- <li class="breadcrumb-item">Table</li> -->
                         <li class="breadcrumb-item active">{{ isset($page_title) ? $page_title:""}}</li>
                     </ul>
-                    <a href="javascript:void(0)" class="btn btn-sm btn-primary" title="" data-toggle="modal" data-target="#addStockToClient">Add Stock</a>
+                  <!--   <a href="javascript:void(0)" class="btn btn-sm btn-primary" title="" data-toggle="modal" data-target="#addStockToClient">Add Stock</a> -->
                 </div>
             </div>
         </div>
@@ -91,17 +91,19 @@
                                         <thead>
                                                 <tr>
                                                 <th>No</th>
-                                                <th>Client name</th>
-                                                <th>Date</th>
+                                                <th>Item name</th>
+                                               <!--  <th>Date</th>
                                                 <th>Trade end date</th>
-                                                <th>Stock item</th>
+                                                <th>Stock item</th> -->
                                                 <th>Quantity</th>
-                                                <th>Buy price</th>
-                                                <th>Sell price</th>
+                                                <th>Price</th>
+                                                <th>Total Paid</th>
+                                                <th>Date</th>
+                                             <!--    <th>Sell price</th>
                                                 <th>Amount</th>
                                                 <th>Total</th>
                                                 <th>Profit</th>
-                                                <th>Actual Profit(%)</th>
+                                                <th>Actual Profit(%)</th> -->
                                         </thead>
                                         <tbody>
                                         </tbody>
@@ -138,11 +140,7 @@
            <label>Select Client</label>
             <select class="form-control" name="client" id="client">
               <option value="" disabled="" selected="">-select-</option>
-              @if(count($clients))
-              @foreach($clients as $row)
-               <option value="{{ $row->id }}">{{ $row->name}}</option>
-              @endforeach
-              @endif
+           
             </select>
            <p class="text-danger client-error"></p>
           </div>
@@ -165,11 +163,7 @@
           <label>Select Stock item</label>
           <select class="form-control" name="stock_item" id="stock_item">
               <option value="" disabled="" selected="">-select-</option>
-              @if(count($stocks))
-              @foreach($stocks as $row)
-               <option value="{{ $row->id }}">{{ $row->name}}&nbsp;&nbsp;&nbsp;(in stock {{ $row->quantity}})</option>
-              @endforeach
-              @endif
+            
           </select>
           <p class="text-danger stock_item-error"></p>
           </div>

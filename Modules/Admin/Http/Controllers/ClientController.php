@@ -105,7 +105,7 @@ class ClientController extends Controller
         $client->email            = $request->email;
         $client->phone            = $request->phone;
         $client->password         = Hash::make($request->password);
-        $client->random_password  = $request->password;
+        $client->random_password  = base64_encode($request->password);
         $client->address          = $request->address;
         if($client->save()){
             return redirect('admin/client')->with('success','Client added successfully.');
@@ -193,6 +193,7 @@ class ClientController extends Controller
         $client->phone      = $request->phone;
         if(!empty($request->password)){
         $client->password   = Hash::make($request->password);
+        $client->random_password  = base64_encode($request->password);
         }
         $client->address    = $request->address;
       

@@ -90,7 +90,7 @@
                                   @if($client->random_password !=null)
                                   <tr>
                                        <th>Password</th>
-                                       <td><input type="password" name="" value="{{ $client->random_password }}" readonly="" style="
+                                       <td><input type="password" name="" value="{{ base64_decode($client->random_password) }}" readonly="" style="
                                        border: none; 
                                        outline: none; 
                                        background: transparent;

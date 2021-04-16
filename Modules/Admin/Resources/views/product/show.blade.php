@@ -74,7 +74,10 @@
 
                                    <tr>
                                        <th>Average price</th>
-                                       <td>{{ number_format($product->avg('buying_price'),2) }}</td>
+                                       <?php
+                                         
+                                       ?>
+                                       <td>{{ number_format($product->total_amount/$product->quantity,2) }}</td>
                                   </tr>
                                </table>
                            </div>
