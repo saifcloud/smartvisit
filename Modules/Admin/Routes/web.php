@@ -26,19 +26,19 @@ Route::get('dashboard', 'AdminController@index');
 
 
 //product
-Route::get('product','ProductController@index');
+Route::get('doctor','DoctorController@index');
 
-Route::get('product/create','ProductController@create');
-Route::post('product/store','ProductController@store');
+Route::get('doctor/create','DoctorController@create');
+Route::post('doctor/store','DoctorController@store');
 
-Route::get('product/show/{id}','ProductController@show');
+Route::get('doctor/show/{id}','DoctorController@show');
 
-Route::get('product/edit/{id}','ProductController@edit');
-Route::post('product/update','ProductController@update');
+Route::get('doctor/edit/{id}','DoctorController@edit');
+Route::post('doctor/update','DoctorController@update');
 
-Route::get('product/delete/{od}','ProductController@destroy');
+Route::get('doctor/delete/{od}','DoctorController@destroy');
 
-Route::post('product/quantity','ProductController@product_quantity');
+Route::post('doctor/quantity','DoctorController@product_quantity');
 
 
 
@@ -66,12 +66,20 @@ Route::post('add-stock-to-client','StockController@store');
 
 Route::post('get-stock-item','StockController@get_stock_item');
 
+
+Route::post('get-stock-item-encode','StockController@get_stock_item_encode');
+
 Route::get('stock/show/{id}','StockController@show');
 
 Route::get('stock/edit/{id}','StockController@edit');
 Route::post('stock/update','StockController@update');
 
 Route::get('stock/delete/{id}','StockController@destroy');
+
+Route::post('sell-stock','StockController@sell_stock');
+
+Route::post('buy-stock','StockController@buy_stock');
+
 
 
 //profile

@@ -91,17 +91,23 @@
                                         <thead>
                                                 <tr>
                                                 <th>No</th>
-                                                <th>Client name</th>
                                                 <th>Date</th>
-                                                <th>Trade end date</th>
+                                                <th>Client name</th>
                                                 <th>Stock item</th>
                                                 <th>Quantity</th>
-                                                <th>Buy price</th>
-                                                <th>Sell price</th>
-                                                <th>Amount</th>
-                                                <th>Total</th>
+                                                <th>Average Buying price</th>
+                                                <th>Invested amount</th>
+                                                <th>Current price</th>
+                                                <th>Current value</th>
+                                                <!--<th>Sell price (Avg)</th>-->
+                                                <!--<th>Sell value</th>-->
                                                 <th>Profit</th>
-                                                <th>Actual Profit(%)</th>
+                                                <th>Profit(%)</th>
+                                                <th>Trade end date</th>
+                                                <th>Action</th>
+                                                <!--<th>Total</th>-->
+                                                <!--<th>Profit</th>-->
+                                                <!--<th>Actual Profit(%)</th>-->
                                         </thead>
                                         <tbody>
                                         </tbody>
@@ -155,69 +161,94 @@
 
 
 
-           <div class="form-group col-sm-6">
-           <label>Trade end date</label>
-           <input type="text"   class="form-control" name="trade-end-date" id="st-trade-end" >
-           <p class="text-danger st-end-error"></p>
-          </div>
+          <!-- <div class="form-group col-sm-6">-->
+          <!-- <label>Trade end date</label>-->
+          <!-- <input type="text"   class="form-control" name="trade-end-date" id="st-trade-end" >-->
+          <!-- <p class="text-danger st-end-error"></p>-->
+          <!--</div>-->
 
-          <div class="form-group col-sm-12">
-          <label>Select Stock item</label>
+          <div class="form-group col-sm-6">
+          <label>Stock item</label>
           <select class="form-control" name="stock_item" id="stock_item">
               <option value="" selected="">-select-</option>
               @if(count($stocks))
               @foreach($stocks as $row)
-               <option value="{{ $row->id }}">{{ $row->name}}&nbsp;&nbsp;&nbsp;(in stock {{ $row->quantity}})</option>
+               <option value="{{ $row->id }}">{{ $row->name}}</option>
               @endforeach
               @endif
           </select>
           <p class="text-danger stock_item-error"></p>
           </div>
 
-
-
-           <div class="form-group col-sm-6">
+          
+          <div class="form-group col-sm-6">
            <label>Quantity</label>
-           <input type="number"   class="form-control" name="quantity"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="quantity">
+           <input type="number"   class="form-control getValue" name="quantity"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" id="st-quantity">
            <p class="text-danger quantity-error"></p>
           </div>
-
+          
+          
           <div class="form-group col-sm-6">
           <label>Buying price</label>
-          <input type="number" step="1" min="1" class="form-control"
-           name="buying_price" id="buying_price" readonly="">
+          <input type="number" step="1" min="1" class="form-control getValue"
+           name="buying_price" id="buying_price">
           <p class="text-danger buying_price-error"></p>
           </div>
+          
+
+          
 
 
-
-          <div class="form-group col-sm-6">
-           <label>Selling price</label>
-           <input type="number"   class="form-control" name="quantity" step="2" id="selling_price"> 
-           <p class="text-danger selling_price-error"></p>
+            <div class="form-group col-sm-6">
+           <label>Current price</label>
+           <input type="number"   class="form-control" name="quantity" step="2" id="current_price" readonly=""> 
+           <!--<p class="text-danger selling_price-error"></p>-->
           </div>
+          
 
-          <div class="form-group col-sm-6">
-          <label>Total amount</label>
-          <input type="number" step="1" min="1" class="form-control" name="total" readonly="" id="st_total_amount">
-          <p class="text-danger"></p>
-          </div>
-
-
-
-
+       
+        <!--<div class="form-group col-sm-6">-->
+        <!--   <label>Current price</label>-->
+        <!--   <input type="number"   class="form-control" name="current_price" step="2" id="current_price"> -->
+        <!--   <p class="text-danger current_price_error"></p>-->
+        <!--  </div>-->
+          
+          
            <div class="form-group col-sm-6">
-           <label>Profit Amount</label>
-           <input type="number"   class="form-control" name="profit" step="2" id="stprofit" readonly=""> 
-           <!-- <p class="text-danger selling_price-error"></p> -->
+           <label>Invested amount</label>
+           <input type="number"   class="form-control" name="invested_amount" step="2" id="invested_amount" readonly=""> 
+           <p class="text-danger invested_amount_error"></p>
           </div>
 
+          <!--<div class="form-group col-sm-6">-->
+          <!-- <label>Selling price</label>-->
+          <!-- <input type="number"   class="form-control" name="quantity" step="2" id="selling_price"> -->
+          <!-- <p class="text-danger selling_price-error"></p>-->
+          <!--</div>-->
+          
+          
 
-           <div class="form-group col-sm-6">
-           <label>Profit(%)</label>
-           <input type="number"   class="form-control" name="profit" step="2" id="stprofitper" readonly=""> 
+          <!--<div class="form-group col-sm-6" style="margin-right:auto; margin-left:auto;">-->
+          <!--<label  style="margin-right:auto; margin-left:auto;">Total amount</label>-->
+          <!--<input type="number" step="1" min="1" class="form-control" name="total" readonly="" id="st_total_amount">-->
+          <!--<p class="text-danger"></p>-->
+          <!--</div>-->
+
+
+
+
+          <!-- <div class="form-group col-sm-6">-->
+          <!-- <label>Profit Amount</label>-->
+          <!-- <input type="number"   class="form-control" name="profit" step="2" id="stprofit" readonly=""> -->
            <!-- <p class="text-danger selling_price-error"></p> -->
-          </div>
+          <!--</div>-->
+
+
+          <!-- <div class="form-group col-sm-6">-->
+          <!-- <label>Profit(%)</label>-->
+          <!-- <input type="number"   class="form-control" name="profit" step="2" id="stprofitper" readonly=""> -->
+           <!-- <p class="text-danger selling_price-error"></p> -->
+          <!--</div>-->
 
 
           <!-- <div class="form-group col-sm-6">

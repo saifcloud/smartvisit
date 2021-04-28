@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function index()
     {
         //
-        return view('login');
+        return view('doctor.login');
     }
 
     /**
@@ -25,7 +25,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function doctor_login(Request $request)
     {
         //
         $request->validate([
@@ -33,9 +33,9 @@ class AuthController extends Controller
          'password' =>'required'
         ]);
 
-        $credentials  = $request->only('email','password');
-        if(Auth::attempt($credentials)){
-        return redirect('dashboard');
+        // $credentials  = $request->only('email','password');
+        if(Auth::attempt(['email'=>$request->email,'password'=>$request->password,'is_deleted'=>0])){
+        return redirect('doctor/dashboard');
         }
         return back()->withInput()->with('failed','Please check email or password.');
     }

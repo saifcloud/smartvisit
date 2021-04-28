@@ -26,26 +26,11 @@ class AdminController extends Controller
         // echo Carbon::now()->toDateString(); die;
         $page_title ='Dashboard';
 
-        $total_stock_value = Product::where('status',1)
-                                      ->where('is_deleted',0)
-                                      ->sum('total_amount');
-
-        $total_stock       = Product::where('status',1)
-                                      ->where('is_deleted',0)
-                                      ->sum('quantity');
-
-
-        $clients           = User::where('status',1)
-                                   ->where('is_deleted',0)
-                                   ->count();
-
-        $todaySale         = Stock_history::whereBetween('created_at',
-                                             [Carbon::now()->toDateString().' 00:00:00',Carbon::now()->toDateString().' 11:59:59'
-                                            ])->sum(\DB::raw('quantity * selling_price'));
+      
        
 
         // print_r($todaySale); die;
-        return view('admin::dashboard',compact('page_title','clients','total_stock_value','total_stock','todaySale'));
+        return view('admin::dashboard',compact('page_title'));
     }
 
     /**

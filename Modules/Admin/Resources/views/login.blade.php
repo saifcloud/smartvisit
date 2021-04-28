@@ -4,16 +4,15 @@
 
 <!-- Mirrored from www.wrraptheme.com/templates/hexabit/html/light/page-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 14 Feb 2020 07:22:40 GMT -->
 <head>
-<title>:: HexaBit :: Login</title>
+<title>:: GDL GLOBAL :: Login</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<meta name="description" content="HexaBit Bootstrap 4x Admin Template">
-<meta name="author" content="WrapTheme, www.thememakker.com">
+
 
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- VENDOR CSS -->
-<link rel="stylesheet" href="http://www.wrraptheme.com/templates/hexabit/html/assets/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ url('public/admin_assets/css/bootstrap.min.css')}}">
 <link rel="stylesheet" href="http://www.wrraptheme.com/templates/hexabit/html/assets/vendor/font-awesome/css/font-awesome.min.css">
 
 <!-- MAIN CSS -->
@@ -68,7 +67,7 @@
                                     <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
                                 <!-- </a> -->
                                 <div class="bottom">
-                                    <span class="helper-text m-b-10"><i class="fa fa-lock"></i><a href="{{ url('admin/forget-password')}}">Forgot password?</a></span>
+                                    <!--<span class="helper-text m-b-10"><i class="fa fa-lock"></i><a href="{{ url('admin/forget-password')}}">Forgot password?</a></span>-->
                                     <!-- <span>Don't have an account? <a href="page-register.html">Register</a></span> -->
                                 </div>
                             </form>

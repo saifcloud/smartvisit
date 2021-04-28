@@ -200,7 +200,7 @@
                                             <i class="fa fa-2x fa-dollar text-col-blue"></i>
                                         </div>
                                         <div class="number float-right text-right">
-                                            <h6>Current stocks value</h6>
+                                            <h6>Current </h6>
                                             <span class="font700">${{ isset($total_stock_value) ? $total_stock_value:''}}</span>
                                         </div>
                                     </div>
@@ -217,7 +217,7 @@
                                             <i class="fa fa-2x fa-bar-chart-o text-col-green"></i>
                                         </div>
                                         <div class="number float-right text-right">
-                                            <h6>Total stocks</h6>
+                                            <h6>Total</h6>
                                             <span class="font700">{{ isset($total_stock) ? $total_stock:'' }}</span>
                                         </div>
                                     </div>

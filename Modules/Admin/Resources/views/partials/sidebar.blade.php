@@ -28,14 +28,14 @@
 
                     <li class="{{ isset($page_title) && $page_title=='Dashboard' ? 'active':''}}"><a href="{{ url('admin/dashboard')}}"><i class="icon-home"></i><span>Dashboard</span></a></li>
 
-                    <li class="{{ isset($page_title) && $page_title=='Products' || $page_title=='Product create' 
-                    || $page_title=='Product edit' || $page_title=='Product details' ? 'active':''}}"><a href="{{ url('admin/product')}}"><i class="icon-list"></i><span>Product</span></a></li>
+                    <li class="{{ isset($page_title) && $page_title=='Doctors' || $page_title=='Doctor create' 
+                    || $page_title=='Doctor edit' || $page_title=='Doctor details' ? 'active':''}}"><a href="{{ url('admin/doctor')}}"><i class="icon-list"></i><span>Doctors</span></a></li>
 
                     <li class="{{ isset($page_title) && $page_title=='Client' || $page_title=='Create client' 
                     || $page_title=='Client edit' || $page_title=='Client details' ? 'active':''}}"><a href="{{ url('admin/client')}}"><i class="icon-user"></i><span>Client</span></a></li>
 
-                    <li class="{{ isset($page_title) && $page_title=='Stocks' || $page_title=='Create clientg' 
-                    || $page_title=='Client editg' || $page_title=='Client detailsg' ? 'active':''}}"><a href="{{ url('admin/stock')}}"><i class="icon-notebook"></i><span>Stocks</span></a></li>
+                   <!--  <li class="{{ isset($page_title) && $page_title=='Stocks' || $page_title=='Stock details' 
+                    || $page_title=='Client edit' || $page_title=='Client details' ? 'active':''}}"><a href="{{ url('admin/stock')}}"><i class="icon-notebook"></i><span>Stocks</span></a></li> -->
 
 
                    <!--  <li><a href="app-chat.html"><i class="icon-bubbles"></i><span>Chat</span></a></li>
