@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\City;
 use App\State;
 use App\Country;
+use App\Clinical_update;
 
 
 class HomeController extends Controller
@@ -30,7 +31,9 @@ class HomeController extends Controller
     public function clinical_update()
     {
         //
-        return view('doctor.clinical_update');
+        $page_title = "Clinical Updates";
+        $clinical_update = Clinical_update::where('status',1)->where('is_deleted',0)->latest()->get();
+        return view('doctor.clinical_update',compact('clinical_update','page_title'));
     }
 
     /**
@@ -39,10 +42,12 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function clinical_details(Request $request)
+    public function clinical_details($id)
     {
         //
-        return view('doctor.clinical_details');
+        $page_title = "Clinical Updates";
+        $clinical_update = Clinical_update::find(base64_decode($id));
+        return view('doctor.clinical_details',compact('clinical_update','page_title'));
     }
 
     /**

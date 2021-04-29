@@ -20,15 +20,16 @@
                                                 <span>
                                                     <i class="fa fa-angle-left" aria-hidden="true"></i>
                                                 </span>
-                                                April
+                                               
+                                            {{ Carbon\Carbon::now()->subMonth()->format('F')}}
                                             </button>
                                         </li>
                                         <li>
-                                            <span class="middlepaginate">May 2020</span>
+                                            <span class="middlepaginate">  {{ Carbon\Carbon::now()->format('F Y')}}</span>
                                         </li>
                                         <li>
                                             <button type="button" class="paginatebtn">
-                                                June
+                                                 {{ Carbon\Carbon::now()->addMonth()->format('F')}}
                                                <span class="righticon">
                                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                                                 </span>
@@ -57,12 +58,17 @@
                             <thead>
                                 <tr>
                                     <th>Day</th>
-                                    <th>10 am - 12 am</th>
+                                     @if(count($slots))
+                                    @foreach($slots as $row)
+                                     <th>{{ $row->name }}</th>
+                                    @endforeach
+                                    @endif
+                                   <!--  <th>10 am - 12 am</th>
                                     <th>12 am - 2 pm</th>
                                     <th>2 pm - 4 pm</th>
                                     <th>4 pm - 6 pm</th>
                                     <th>6 pm - 8 pm</th>
-                                    <th>8 am - 10 pm</th>
+                                    <th>8 am - 10 pm</th> -->
                                 </tr>
                             </thead>
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Doctor_paitent;
 
 class PatientController extends Controller
 {
@@ -14,13 +16,19 @@ class PatientController extends Controller
     public function index()
     {
         //
-        return view('doctor.patients');
+     $page_title = "Patients";
+     $paitents = Doctor_paitent::where('doctor_id',Auth::id())
+                                                            ->where('is_deleted',0)
+                                                            ->paginate(14);
+     return view('doctor.patients',compact('paitents','page_title'));
     }
 
-    public function patient_detail($id=null)
+    public function patient_detail($id)
     {
         //
-        return view('doctor.patient_detail');
+        $page_title ='Patients';
+        $paitents = Doctor_paitent::where('id',base64_decode($id))->where('is_deleted',0)->first();
+        return view('doctor.patient_detail',compact('paitents','page_title'));
     }
 
     /**

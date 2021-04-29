@@ -21,11 +21,8 @@ class UserController extends Controller
     {
         //
         $page_title = "Dashboard";
-        $buy  = Stock_history::where('client_id',Auth::id())->where('status',1)->where('is_deleted',0)->sum(\DB::raw('quantity * buying_price'));
-        // return $buy;  
-        $sold = Stock_history::where('client_id',Auth::id())->where('status',2)->where('is_deleted',0)->sum(\DB::raw('selling_price * selling_price'));
-        //  return $sold;  
-        return view('dashboard',compact('page_title','buy','sold'));
+       
+        return view('dashboard',compact('page_title'));
     }
 
     /**

@@ -14,21 +14,21 @@
                             
                                 <label for="photo-upload" class="custom-file-upload consultprofile">
                                     <div class="img-wrap img-upload">
-                                        <img for="photo-upload" src="{{ url('public/doctor/images/overview/profileone.jpeg') }}">
+                                        <img for="photo-upload" src="{{ url('/').$paitents->paitent_details->image }}">
                                     </div>
                                 </label>
                             
                         </div>
                     </div>
-                    <h5>Devon Cooper</h5>
-                    <span>_Devon_Cooper</span>
-                    <span>22 Years Old</span>
+                    <h5>{{ $paitents->paitent_details->first_name }} {{ $paitents->paitent_details->last_name}}</h5>
+                    <span>_{{ $paitents->paitent_details->first_name }}_{{ $paitents->paitent_details->last_name}}_</span>
+                    <span>{{ \Carbon\Carbon::parse($paitents->paitent_details->dob)->diff(\Carbon\Carbon::now())->format('%y')}} Years Old</span>
 
                     <div class="consultsocialitem">
                         <ul>
                             <li>
                                 <button class="defaultbtn numberbtn">
-                                    <i class="flaticon-phone"></i> +0123456789
+                                    <i class="flaticon-phone"></i> {{ $paitents->paitent_details->phone}}
                                 </button>
                             </li>
                         </ul>
@@ -64,23 +64,23 @@
                                         <table class="table">
                                             <tr>
                                             <td class="text-left" style="border-top: 0;">Date Of Birth:</td>
-                                            <td class="text-right" style="border-top: 0;">01/23/1998</td>
+                                            <td class="text-right" style="border-top: 0;">{{ $paitents->paitent_details->dob }}</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-left">Address:</td>
-                                                <td class="text-right">11 Millbrook St.</td>
+                                                <td class="text-right">{{ $paitents->paitent_details->paitent_basic_details->address}}</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-left">City:</td>
-                                                <td class="text-right">Worcester</td>
+                                                <td class="text-right">{{ $paitents->paitent_details->paitent_basic_details->city}}</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-left">Zip Code:</td>
-                                                <td class="text-right">Ma 01606</td>
+                                                <td class="text-right">{{ $paitents->paitent_details->paitent_basic_details->zip_code}}</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-left">State:</td>
-                                                <td class="text-right">Massachusetts</td>
+                                                <td class="text-right">{{ $paitents->paitent_details->paitent_basic_details->state}}</td>
                                             </tr>
                                             <tr>
                                                 <td class="text-left">Insurance Or Self-Pay:</td>

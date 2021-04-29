@@ -47,12 +47,12 @@ Route::get('dashboard',[DoctorController::class,'index']);
 Route::get('logout',[UserController::class,'destroy']);
 
 Route::get('patients',[PatientController::class,'index']);
-Route::get('patient-detail',[PatientController::class,'patient_detail']);
+Route::get('patient-detail/{id}',[PatientController::class,'patient_detail']);
 
 Route::get('consult-patient',[PatientController::class,'consult_patient']);
 
 Route::get('clinical-update',[HomeController::class,'clinical_update']);
-Route::get('clinical-details',[HomeController::class,'clinical_details']);
+Route::get('clinical-details/{id}',[HomeController::class,'clinical_details']);
 
 Route::get('availability',[AvailabilityController::class,'index']);
 Route::get('availability-edit',[AvailabilityController::class,'availability_edit']);
@@ -62,14 +62,19 @@ Route::get('payments',[PaymentController::class,'index']);
 
 //profile
 Route::get('profile',[DoctorController::class,'profile']);
+Route::post('profile-image',[DoctorController::class,'profile_image']);
 Route::post('get-state',[HomeController::class,'get_state']);
 Route::post('get-city',[HomeController::class,'get_city']);
 Route::post('form-load-data',[HomeController::class,'form_load_data']);
 Route::post('add-doctor-information',[DoctorController::class,'add_doctor_information']);
-
+Route::post('change-password',[DoctorController::class,'change_password']);
+Route::post('notification-setting',[DoctorController::class,'notification_setting']);
 Route::get('ordertest',[PatientController::class,'ordertest']);
 
 Route::get('prescribe',[PatientController::class,'prescribe']);
+
+
+Route::get('logout',[DoctorController::class,'destroy']);
 
 
 

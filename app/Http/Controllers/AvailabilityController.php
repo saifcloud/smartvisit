@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Slot;
 
 class AvailabilityController extends Controller
 {
@@ -14,7 +15,9 @@ class AvailabilityController extends Controller
     public function index()
     {
         //
-        return view('doctor.availability');
+        $page_title = "My availability";
+        $slots = Slot::where('status',1)->where('is_deleted',0)->get();
+        return view('doctor.availability',compact('slots','page_title'));
     }
 
     /**
@@ -25,7 +28,9 @@ class AvailabilityController extends Controller
     public function availability_edit()
     {
         //
-         return view('doctor.availability_edit');
+         $page_title = "My availability";
+         $slots = Slot::where('status',1)->where('is_deleted',0)->get();
+         return view('doctor.availability_edit',compact('slots','page_title'));
     }
     
 

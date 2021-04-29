@@ -58,12 +58,17 @@
                             <thead>
                                 <tr>
                                     <th>Day</th>
-                                    <th>10 am - 12 am</th>
+                                    @if(count($slots))
+                                    @foreach($slots as $row)
+                                     <th>{{ $row->name }}</th>
+                                    @endforeach
+                                    @endif
+                                    <!-- <th>10 am - 12 am</th>
                                     <th>12 am - 2 pm</th>
                                     <th>2 pm - 4 pm</th>
                                     <th>4 pm - 6 pm</th>
                                     <th>6 pm - 8 pm</th>
-                                    <th>8 am - 10 pm</th>
+                                    <th>8 am - 10 pm</th> -->
                                 </tr>
                             </thead>
 

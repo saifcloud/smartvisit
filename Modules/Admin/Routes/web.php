@@ -58,28 +58,14 @@ Route::get('client/delete/{id}','ClientController@destroy');
 
 
 
-//stock
-Route::get('stock','StockController@index');
+//clinical updates
 
-Route::get('stock/create','StockController@create');
-Route::post('add-stock-to-client','StockController@store');
-
-Route::post('get-stock-item','StockController@get_stock_item');
-
-
-Route::post('get-stock-item-encode','StockController@get_stock_item_encode');
-
-Route::get('stock/show/{id}','StockController@show');
-
-Route::get('stock/edit/{id}','StockController@edit');
-Route::post('stock/update','StockController@update');
-
-Route::get('stock/delete/{id}','StockController@destroy');
-
-Route::post('sell-stock','StockController@sell_stock');
-
-Route::post('buy-stock','StockController@buy_stock');
-
+Route::get('clinical-update','AdminController@clinical_update');
+Route::get('clinical-create','AdminController@clinical_create');
+Route::post('clinical-store','AdminController@clinical_store');
+Route::get('clinical-edit/{id}','AdminController@clinical_edit');
+Route::post('clinical-update-post','AdminController@clinical_update_post');
+Route::get('clinical-delete/{id}','AdminController@clinical_delete');
 
 
 //profile

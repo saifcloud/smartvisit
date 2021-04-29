@@ -41,4 +41,8 @@ class User extends Authenticatable
     public function doctor_mailing(){
         return $this->hasOne('App\Mailing_address','user_id','id');
     }
+
+    public function paitent_basic_details(){
+        return $this->hasOne('App\Paitent_detail','paitent_id','id');
+    }
 }

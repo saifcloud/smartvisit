@@ -14,7 +14,8 @@ class PaymentController extends Controller
     public function index()
     {
         //
-        return view('doctor.payments');
+        $page_title = "Payments";
+        return view('doctor.payments',compact('page_title'));
     }
 
     /**

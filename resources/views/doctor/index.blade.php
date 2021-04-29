@@ -366,21 +366,23 @@
                         <div class="col-md-12">
                             <div class="overview_consult_head fullcolumhead">
                                 <h5>Clinical Updates</h5>
-                                <span>See All</span>
+                                <a href="{{ url('doctor/clinical-update')}}"><span>See All</span></a>
                             </div>
 
                             <div class="card">
-
+                              
+                               @if(count($clinical_update) > 0)
+                               @foreach($clinical_update as $row)
                                 <div class="overflex" style="align-items: unset;">
                                     <div class="updatepic">
-                                        <img src="{{ url('public/doctor/images/overview/doctorone.jpg') }}" alt="">
+                                        <img src="{{ url('/').$row->image }}" alt="">
                                     </div>
                                     <div class="updatecontent">
-                                        <h5>LDL cholestrol: How low can you (safely) go?.</h5>
-                                        <h6>Lorem, ipsum dolor sit amet consectetur adipisicing eli. Quam odio odit labore recusandae, provident voluptatum tenetur facilis consectetur temporibus veniam ipsum laudantium ut alias sapiente esse a sit nostrum suscipit. <span>Read More</span></h6> 
+                                        <h5>{{ $row->title }}</h5>
+                                        <h6>{!! \Str::limit($row->description,200) !!} <span>Read More</span></h6> 
                                         <div class="bottomcontent">
                                             <span>
-                                                <img src="{{ url('public/doctor/images/icons/date.png') }}" alt="">  20/03/23
+                                                <img src="{{ url('public/doctor/images/icons/date.png') }}" alt=""> {{ \Carbon\Carbon::parse($row->created_at)->format('d/m/y') }}
                                             </span>
                                             <span>
                                                 <img src="{{ url('public/doctor/images/icons/edit.png') }}" alt=""> Lauren Spencer
@@ -388,9 +390,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
+
+                                @endif
 
 
-                                <div class="overflex" style="align-items: unset;">
+                                <!-- <div class="overflex" style="align-items: unset;">
                                     <div class="updatepic">
                                         <img src="{{ url('public/doctor/images/overview/doctortwo.jpg') }}" alt="">
                                     </div>
@@ -445,7 +450,7 @@
                                         </div>
                                     </div>
                                 </div>
-
+ -->
                                
 
 

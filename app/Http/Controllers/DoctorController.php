@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Hash;
+
 use App\User;
 use App\City;
 use App\State;
 use App\Country;
 
+use App\Clinical_update;
 use App\Mailing_address;
 
 class DoctorController extends Controller
@@ -21,8 +24,10 @@ class DoctorController extends Controller
     public function index()
     {
         //
+        $page_title ='Dashboard';
+        $clinical_update = Clinical_update::where('status',1)->where('is_deleted',0)->limit(3)->latest()->get();
 
-        return view('doctor.index');
+        return view('doctor.index',compact('page_title','clinical_update'));
     }
 
     /**
@@ -92,9 +97,19 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function profile_image(Request $request)
     {
         //
+        // return $request->file('image');
+
+        $file = $request->file('image');
+        $filename = time().'.'.$file->getClientOriginalExtension();
+        $file->move('public/doctor/images',$filename);
+        $doctor = User::find(Auth::id());
+        $doctor->image = '/public/doctor/images/'.$filename;
+        $doctor->save();
+
+        return response()->json(['status'=>true,'message'=>'profile updated successfully.']);
     }
 
     /**
@@ -103,9 +118,19 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function change_password(Request $request)
     {
         //
+         
+        $doctor = User::find(Auth::id());
+       // return $request->old_password; die;
+        if(!Hash::check($request->old_password,$doctor->password)){
+        return response()->json(['status'=>false,'message'=>'Old password not matched.']);
+        }
+        $doctor->password = Hash::make($request->new_password);
+        $doctor->save();
+
+        return response()->json(['status'=>true,'message'=>'Password updated successfully.']);
     }
 
     /**
@@ -115,9 +140,13 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function notification_setting(Request $request)
     {
         //
+          $doctor = User::find(Auth::id());
+          $doctor->notification = $request->type;
+          $doctor->save();
+          return response()->json(['status'=>true,'message'=>'Notification setting updated successfully.']);
     }
 
     /**
@@ -126,8 +155,10 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         //
+        Auth::logout();
+        return redirect('/');
     }
 }

@@ -2,7 +2,7 @@
         <div class="navbar-brand">
             <a href="{{ url('admin/dashboard')}}">
                 <!-- <img src="http://www.wrraptheme.com/templates/hexabit/html/assets/images/icon-dark.svg" alt="HexaBit Logo" class="img-fluid logo"> -->
-                <span>GDL GLOBAL</span></a>
+                <span>SMART VISIT</span></a>
             <button type="button" class="btn-toggle-offcanvas btn btn-sm btn-default float-right"><i class="lnr lnr-menu fa fa-chevron-circle-left"></i></button>
         </div>
         <div class="sidebar-scroll">
@@ -32,7 +32,11 @@
                     || $page_title=='Doctor edit' || $page_title=='Doctor details' ? 'active':''}}"><a href="{{ url('admin/doctor')}}"><i class="icon-list"></i><span>Doctors</span></a></li>
 
                     <li class="{{ isset($page_title) && $page_title=='Client' || $page_title=='Create client' 
-                    || $page_title=='Client edit' || $page_title=='Client details' ? 'active':''}}"><a href="{{ url('admin/client')}}"><i class="icon-user"></i><span>Client</span></a></li>
+                    || $page_title=='Client edit' || $page_title=='Client details' ? 'active':''}}"><a href="{{ url('admin/client')}}"><i class="icon-user"></i><span>Paitent</span></a></li>
+
+
+                     <li class="{{ isset($page_title) && $page_title=='Clinical updates' || $page_title=='Create updates' 
+                    || $page_title=='Edit Updates' || $page_title=='Client details' ? 'active':''}}"><a href="{{ url('admin/clinical-update')}}"><i class="icon-user"></i><span>Clinical Updates</span></a></li>
 
                    <!--  <li class="{{ isset($page_title) && $page_title=='Stocks' || $page_title=='Stock details' 
                     || $page_title=='Client edit' || $page_title=='Client details' ? 'active':''}}"><a href="{{ url('admin/stock')}}"><i class="icon-notebook"></i><span>Stocks</span></a></li> -->

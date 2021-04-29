@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Document</title>
+    <title>SmartVisit</title>
 <!-- Latest compiled and minified CSS -->
  <link rel="stylesheet" href="{{ url('public/doctor/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ url('public/doctor/css/flaticon.css') }}">
@@ -30,17 +30,17 @@
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a href="" class="nav-link">
-                        <img src="images/icons/call.png" alt=""> +0123456789
+                        <img src="images/icons/call.png" alt=""> {{ Auth::user()->phone }}
                     </a>
                 </li>
                 <li class="nav-item active">
                     <a href="" class="nav-link">
-                        <img src="images/icons/bell.png" alt="">
+                        <img src="{{ url('public/doctor/images/icons/bell.png') }}" alt="">
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a href="" class="nav-link">
-                        <img src="images/icons/logout.png" alt="">
+                    <a href="{{ url('doctor/logout')}}" class="nav-link">
+                        <img src="{{ url('public/doctor/images/icons/logout.png') }}" alt="">
                     </a>
                 </li>
               </ul>

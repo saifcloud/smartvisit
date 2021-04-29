@@ -36,6 +36,10 @@ s<!-- Javascript -->
 
 
 
+<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+<script>
+CKEDITOR.replace( 'description' );
+</script>
 
 <!-- doctor -->
 <script type="text/javascript">
@@ -59,6 +63,56 @@ s<!-- Javascript -->
            {data:'last_name',name:"last_name"},
            {data:'email',name:'email'},
            {data:'phone',name:'phone'},
+           {data:'action',name:'action',orderable: true,searchable: true}
+
+    ]
+  });
+
+
+
+
+   // 
+   $('#sameAddress').click(function(){
+        // alert($('#office_first_name').val())
+      $('#residence_first_name').val($('#office_first_name').val());
+      $('#residence_last_name').val($('#office_last_name').val());
+      $('#residence_email').val($('#office_email').val());
+      $('#residence_phone').val($('#office_phone').val());
+      $('#residence_address_1').val($('#office_address_1').val());
+      $('#residence_address_2').val($('#office_address_2').val());
+      $('#residence_zip_code').val($('#office_zip_code').val());
+      $('#residence_city').val($('#office_city').val());
+      $('#residence_state').val($('#office_state').val());
+      $('#residence_country').val($('#office_country').val());
+   })
+
+  })
+</script>
+
+
+
+<!-- clinical update -->
+<script type="text/javascript">
+  $(document).ready(function(){
+
+   $.ajaxSetup({
+         headers:{
+             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+         }
+   });
+
+  //initalize table
+
+  var table = $('.data-table-clinical-update').DataTable({
+    processing:true,
+    serverSide:true,
+    ajax:"{{ url('admin/clinical-update')}}",
+    columns:[
+           {data:'DT_RowIndex',name:'DT_RowIndex'},
+           {data:'image',name:'image'},
+           {data:'title',name:"title"},
+           {data:'description',name:'description'},
+           {data:'date',name:'date'},
            {data:'action',name:'action',orderable: true,searchable: true}
 
     ]

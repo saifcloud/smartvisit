@@ -13,15 +13,17 @@
                          <div class="form-group text-center profileset">
                              <label for="photo-upload" class="custom-file-upload fas">
                                  <div class="img-wrap img-upload">
-                                     <img for="photo-upload" src="{{ url('public/doctor/images/profile.jpg')}}">
+                                     <img for="photo-upload" src="{{ url('/').$doctor->image}}">
                                  </div>
+                                 <form id="profileImage" method="post" enctype="multipart/form-data">
                                  <div class="p-image"> <i class="flaticon-camera upload-button"></i>
                                      <input class="file-upload" id="photo-upload" type="file" name="image" accept="image/*">
                                  </div>
+                                 </form>
                              </label>
                          </div>
                         </div>
-                        <h5>{{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</h5>
+                        <h5 class="doctor_name">{{ Auth::user()->first_name }}  {{ Auth::user()->last_name }}</h5>
  
                         <div class="tabitem">
                             <ul>
@@ -309,25 +311,26 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <h5 class="notificationHeading">How To Get Notifications?</h5>
+                                         <p class="alert alert-success  text-center" style="display: none;" id="servermsgnotifi"></p>
                                         <div class="form-group soapradio">
 
-                                             <div class="designradio activeradio">
+                                             <div class="designradio {{ $doctor->notification==1 ? 'activeradio':''}}">
                                                 <label class="paymentradio notiradio">Mail
-                                                    <input type="radio"  name="mail" value="1" {{ $doctor->notification==1 ? "checked":""}}>
+                                                    <input type="radio"  name="notification" value="1" id="notification" {{ $doctor->notification==1 ? "checked":""}} >
                                                     <span class="checkmark"></span>
                                                   </label>
                                              </div>
 
-                                             <div class="designradio">
+                                             <div class="designradio {{ $doctor->notification==2 ? 'activeradio':''}}">
                                                 <label class="paymentradio notiradio">Phone
-                                                    <input type="radio" name="radio" value="2" {{ $doctor->notification==2 ? "checked":""}}>
+                                                    <input type="radio" name="notification" value="2" id="notification" {{ $doctor->notification==2 ? "checked":""}} >
                                                     <span class="checkmark"></span>
                                                   </label>
                                              </div>
 
-                                              <div class="designradio">
+                                              <div class="designradio {{ $doctor->notification==3 ? 'activeradio':''}}">
                                                 <label class="paymentradio notiradio">Both
-                                                    <input type="radio" name="radio" value="3" {{ $doctor->notification==3 ? "checked":""}}>
+                                                    <input type="radio" name="notification" value="3" id="notification" {{ $doctor->notification==3 ? "checked":""}} >
                                                     <span class="checkmark"></span>
                                                   </label>
                                               </div>
@@ -340,7 +343,7 @@
 
                                 <div class="col-md-3">
                                     <div class="btnedit">
-                                        <button type="button" class="btn orangebtn">
+                                        <button type="button" class="btn orangebtn" id="notificationSav">
                                          <i class="flaticon-select"></i>  Save
                                         </button>
                                     </div>
@@ -357,26 +360,32 @@
                                 <div class="col-md-6 offset-md-3">
                                     <div class="passwordfield">
                                         <h5 class="notificationHeading">Change Password</h5>
+                                         <p class="alert  text-center" style="display: none;" id="servermsgpassword"></p>
+                                        <form id="password_change">
                                         <div class="form-group">
                                            <label for="">Old Password</label>
-                                           <input type="password" class="form-control" >
+                                           <input type="password" class="form-control" name="old_password" id="old_password">
+                                           <p id="old_password_error" class="text-danger"></p>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="">New Password</label>
-                                            <input type="password" class="form-control" >
+                                            <input type="password" class="form-control" name="new_password" id="new_password">
+                                            <p id="password_error" class="text-danger password_error"></p>
                                          </div>
 
                                          <div class="form-group">
                                             <label for="">Repeat New Password</label>
-                                            <input type="password" class="form-control" >
+                                            <input type="password" class="form-control" id="repeat_new_password" name="repeat_new_password">
+                                            <p id="repeat_new_password_error" class="text-danger repeat_new_password_error"></p>
                                          </div>
 
                                          <div class="form-group">
-                                            <button type="button" class="btn orangebtn">
+                                            <button type="button" class="btn orangebtn" id="passChnage">
                                             Change Password
                                             </button>
                                         </div>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -883,6 +892,7 @@
                   success:function(response){
                     $('#servermsg').text(response.message);
                     $('#servermsg').css("display", "block");
+                    $('.doctor_name').text($('#first_name').val()+' '+$('#last_name').val());
                   console.log(response);
                   }
           });
@@ -890,12 +900,160 @@
      
 
 
-   })
+   });
+
+
+})
+</script>
+
+
+<!-- profile upload -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+           $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+       });
+
+
+      $('#photo-upload').on('change',function(){
+        var formData = new FormData($("#profileImage")[0]);
+          $.ajax({
+                  url:"{{ url('doctor/profile-image')}}",
+                  type:"POST",
+                  contentType: false,
+                  processData: false,
+                  data: formData,
+                  success:function(response){
+                    // $('#servermsg').text(response.message);
+                    // $('#servermsg').css("display", "block");
+                    window.location.reload()
+                  console.log(response);
+                  }
+          });
+
+      })
+
+  })
+</script>
 
 
 
+<!-- Notification -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+           $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+       });
 
 
-    })
+      $('#notificationSav').on('click',function(){
+        var type = $('input[name="notification"]:checked').val();
+          $.ajax({
+                  url:"{{ url('doctor/notification-setting')}}",
+                  type:"POST",
+                  // contentType: false,
+                  // processData: false,
+                  data: {type:type},
+                  success:function(response){
+                    $('#servermsgnotifi').text(response.message);
+                    $('#servermsgnotifi').css("display", "block");
+                    // window.location.reload()
+                  console.log(response);
+                  }
+          });
+
+      })
+
+  })
+</script>
+
+
+<!-- change password -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+           $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+       });
+
+
+      $('#passChnage').on('click',function(){
+
+        var old_password        = $('#old_password').val();
+        var password            = $('#new_password').val();
+        var repeat_new_password = $('#repeat_new_password').val();
+        
+        var error = 0;
+
+        if(old_password ==''){
+           $('#old_password_error').text('Old password is required.');
+           error++;
+        }else{
+            $('#old_password_error').text('');  
+        }
+        if(password ==''){
+             $('.password_error').text('New password is required.');
+             error++;
+        }else{
+            $('.password_error').text('');  
+        }
+
+      
+       if(repeat_new_password ==''){
+            $('#repeat_new_password_error').text('Repeat new password not is required.');  
+            error++;
+        }else{
+            $('#repeat_new_password_error').text('');  
+        }
+
+
+        //  if(password !='' && password.length < 6){
+        //     $('#password_error').text('Password should be greater than 6 digits.');
+        //      error++;
+        // }else{
+        //     $('#password_error').text('');  
+        // }
+
+
+        // if(repeat_new_password != password){
+        //    $('#repeat_new_password_error').text('Password not matched.'); 
+        //    error++;
+        // }else{
+        //     $('#repeat_new_password_error').text('');  
+        // }
+
+          if(error==0){
+              $.ajax({
+                      url:"{{ url('doctor/change-password')}}",
+                      type:"POST",
+                      // contentType: false,
+                      // processData: false,
+                      data: $('#password_change').serialize(),
+                      success:function(response){
+                         $('#servermsgpassword').text(response.message);
+                       
+                        if(response.status==true){
+                         $('#servermsgpassword').addClass("alert-success");
+                        }else{
+                         $('#servermsgpassword').addClass("alert-danger");
+                        }
+                        $('#servermsgpassword').css("display", "block");
+                        // window.location.reload()
+                      console.log(response);
+                      }
+              });
+          }
+
+      })
+
+  })
 </script>
 @endsection
